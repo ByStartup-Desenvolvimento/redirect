@@ -32,22 +32,23 @@
         var isAndroid = /Android/i.test(navigator.userAgent);
         var intentUrl = "intent://" + targetPath + "#Intent;scheme=mundo-real;package=com.bystartup.mundoreal;end";
         var deepLink = "mundo-real://";
-        console.log(deepLink)
-        function abrirApp() {
-            // ALERT DE DEBUG
-            alert("isAndroid: " + isAndroid + "\nDeep Link: " + deepLink + "\nIntent: " + intentUrl);
-            
+       // Define o link diretamente no href do botão HTML
+        var btnApp = document.getElementById("btnApp");
+        if (isAndroid) {
+            btnApp.href = intentUrl;
+        } else {
+            btnApp.href = deepLink;
+        }
+
+        // Tentativa de redirecionamento automático
+        function abrirAppAutomatico() {
             if (isAndroid) {
                 window.location.href = intentUrl;
             } else {
                 window.location.href = deepLink;
             }
         }
-        document.getElementById("btnApp").onclick = function (e) {
-            e.preventDefault();
-            abrirApp();
-        };
-        setTimeout(abrirApp, 300);
+        setTimeout(abrirAppAutomatico, 300);
     </script>
 </body>
 
