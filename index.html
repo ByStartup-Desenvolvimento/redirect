@@ -31,7 +31,7 @@
 
         var isAndroid = /Android/i.test(navigator.userAgent);
         var intentUrl = "intent://" + targetPath + "#Intent;scheme=mundo-real;package=com.bystartup.mundoreal;end";
-        var deepLink = "mundo-real://" + targetPath;
+        var deepLink = "mundo-real://";
         console.log(deepLink)
         function abrirApp() {
             if (isAndroid) {
