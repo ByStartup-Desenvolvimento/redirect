@@ -17,8 +17,8 @@
         var orderId = params.get("order_id") || "";
         var status = params.get("status") || "approved";
         var targetPath = (status === "approved" || status === "success")
-            ? "(protected)/order-feedback?orderId=" + orderId
-            : "(protected)/awaiting-payment?orderId=" + orderId;
+            ? "order-feedback?orderId=" + orderId
+            : "awaiting-payment?orderId=" + orderId;
         var isAndroid = /Android/i.test(navigator.userAgent);
         var intentUrl = "intent://" + targetPath + "#Intent;scheme=mundo-real;package=com.bystartup.mundoreal;end";
         var deepLink = "mundo-real://" + targetPath;
