@@ -37,18 +37,21 @@
         if (isAndroid) {
             btnApp.href = intentUrl;
         } else {
-            btnApp.href = deepLink;
+            var btn = document.getElementById("btnApp");
+            btn.style.background = "#e0e0e0";
+            btn.style.color = "#666";
+            btn.innerText = "Toque no ✓ no topo esquerdo para voltar";
+            // Desativa a ação do link
+            btn.href = "javascript:void(0)";
         }
-
         // Tentativa de redirecionamento automático
-        function abrirAppAutomatico() {
-            if (isAndroid) {
+         // Tentativa de redirecionamento automático (Apenas para Android)
+        if (isAndroid) {
+            function abrirAppAutomatico() {
                 window.location.href = intentUrl;
-            } else {
-                window.location.href = deepLink;
             }
+            setTimeout(abrirAppAutomatico, 300);
         }
-        setTimeout(abrirAppAutomatico, 300);
     </script>
 </body>
 
